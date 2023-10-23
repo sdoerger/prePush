@@ -14,7 +14,7 @@ var interestedExtensions = []string{".js", ".jsx", ".ts", ".tsx", ".vue", ".scss
 
 // getChangedFiles fetches the list of files that have been changed and staged for commit.
 func getChangedFiles() []string {
-	cmd := exec.Command("git", "diff", "--name-only", "--cached")
+	cmd := exec.Command("git", "diff", "--name-only")
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	err := cmd.Run()
@@ -78,9 +78,9 @@ func main() {
 		return
 	}
 
-	// Run the custom check for "TODO_CMNT:" text in the files.
-	checkForTODO_CMNT(projectFiles)
-
 	// Run ESLint check on the project files.
 	runEslint(projectFiles)
+
+	// Run the custom check for "TODO_CMNT:" text in the files.
+	checkForTODO_CMNT(projectFiles)
 }
