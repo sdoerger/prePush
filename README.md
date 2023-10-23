@@ -5,4 +5,4 @@ Quite hard coded pre-commit equivalent for my specific use case (of running yarn
 `go run main.go`
 
 ## Build
-`go compile`
+`go build`
