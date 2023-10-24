@@ -10,7 +10,7 @@ import (
 )
 
 // List of interested file extensions
-var interestedExtensions = []string{".js", ".jsx", ".ts", ".tsx", ".vue", ".scss", ".css", ".html"}
+var interestedExtensions = []string{".js", ".jsx", ".ts", ".tsx", ".vue", ".scss", ".css"}
 
 // getChangedFiles fetches the list of files that have been changed and staged for commit.
 func getChangedFiles() []string {
@@ -47,8 +47,8 @@ func checkForTODO_CMNT(files []string) {
 			fmt.Printf("Error reading file %s: %v\n", file, err)
 			continue
 		}
-		if strings.Contains(string(content), "TODO_CMNT:") {
-			fmt.Printf("The text 'TODO_CMNT:' was found in %s\n", file)
+		if strings.Contains(string(content), "TODO_SDO:") {
+			fmt.Printf("The text 'TODO_SDO:' was found in %s\n", file)
 		}
 	}
 }
