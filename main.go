@@ -11,6 +11,7 @@ import (
 
 // List of interested file extensions
 var interestedExtensions = []string{".js", ".jsx", ".ts", ".tsx", ".vue", ".scss", ".css"}
+const commentString = "TODO_CMNT"
 
 // getChangedFiles fetches the list of files that have been changed and staged for commit.
 func getChangedFiles() []string {
@@ -41,16 +42,16 @@ func filterProjectFiles(files []string) []string {
 
 // checkForTODO_CMNT searches for the text "TODO_CMNT:" in each file and prints a message if found.
 func checkForTODO_CMNT(files []string) {
-	for _, file := range files {
-		content, err := ioutil.ReadFile(file)
-		if err != nil {
-			fmt.Printf("Error reading file %s: %v\n", file, err)
-			continue
-		}
-		if strings.Contains(string(content), "TODO_SDO:") {
-			fmt.Printf("The text 'TODO_SDO:' was found in %s\n", file)
-		}
-	}
+    for _, file := range files {
+        content, err := ioutil.ReadFile(file)
+        if err != nil {
+            fmt.Printf("Error reading file %s: %v\n", file, err)
+            continue
+        }
+        if strings.Contains(string(content), commentString + ":") {
+            fmt.Printf("The text '%s:' was found in %s\n", commentString, file)
+        }
+    }
 }
 
 // runEslint runs the ESLint check on the provided project files.
